@@ -4,7 +4,8 @@
 namespace ArduinoPong {
     class Input {
         public:
-            Input() { };
+            Input() { }
+            virtual ~Input() { }
 
             virtual float read() const = 0;
     };
