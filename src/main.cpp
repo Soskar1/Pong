@@ -24,9 +24,5 @@ void setup() {
 
 void loop() {
   pong.update();
-
-  lcd.clear();
-  pong.draw();
-
   delay(200);
 }

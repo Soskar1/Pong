@@ -10,8 +10,11 @@ namespace ArduinoPong {
             Paddle(const int& x, const float& y, const int& maxY, const float& step, const std::shared_ptr<Input>& input);
 
             void update();
+            
             int getX() const;
             float getY() const;
+
+            void setY(const float& y);
         private:
             const int x;
             float y;

@@ -30,4 +30,8 @@ namespace ArduinoPong {
     int Paddle::getX() const {
         return x;
     }
+
+    void Paddle::setY(const float& y) {
+        this->y = y;
+    }
 }
