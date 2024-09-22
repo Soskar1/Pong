@@ -1,9 +1,6 @@
 [submodule "lib/Arduino-LiquidCrystal-I2C"]
 	path = lib/Arduino-LiquidCrystal-I2C
 	url = https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library.git
-[submodule "lib/Queue"]
-	path = lib/Queue
-	url = https://github.com/SMFSW/Queue.git
 [submodule "lib/ArxSmartPtr"]
 	path = lib/ArxSmartPtr
 	url = https://github.com/hideakitai/ArxSmartPtr.git
