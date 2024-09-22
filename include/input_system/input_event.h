@@ -1,10 +1,11 @@
 #ifndef INPUT_EVENT_H
 #define INPUT_EVENT_H
 
-namespace ArudinoPong {
-    class InputEvent {
-       public:
-       private: 
+namespace ArduinoPong {
+    typedef void (*EventCallback)(void*);
+
+    struct InputEvent {
+        virtual ~InputEvent() {}
     };
 }
 

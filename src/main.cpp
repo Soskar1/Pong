@@ -1,29 +1,12 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 #include <Arduino.h>
-#include <joystick.h>
 
-#include "custom_characters.h"
+#include "pong/custom_characters.h"
+#include "pong/joystick_input.h"
 
 LiquidCrystal_I2C lcd(0x3F, 20, 4);
-ArduinoPong::Joystick joystick(A0, A1, 7);
-
-void joystickDebug() {
-  float x = joystick.getX();
-  float y = joystick.getY();
-  bool pressed = joystick.buttonPressed();
-
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("X: " + String(x));
-
-  lcd.setCursor(0, 1);
-  lcd.print("Y: " + String(y));
-
-  lcd.setCursor(0, 2);
-  lcd.print("Button: " + String(pressed));
-  delay(1000);
-}
+ArduinoPong::JoystickInput input(A0, A1, 7);
 
 void setup() {
   lcd.begin();
@@ -36,10 +19,17 @@ void setup() {
   lcd.createChar(4, rightPaddleDown);
   lcd.createChar(5, rightPaddle);
 
-  // Serial.begin(9600);
-  joystick.begin();
+  input.begin();
 }
 
 void loop() {
+  input.read();
+  std::shared_ptr<ArduinoPong::InputEvent> event = input.getInputEvent();
+  std::shared_ptr<ArduinoPong::ValueEvent> valueEvent = std::static_pointer_cast<ArduinoPong::ValueEvent>(event);
+  float y = *(static_cast<float*>(valueEvent->data));
+
+  lcd.clear();
+  lcd.println("Y: " + String(y));
   
+  delay(200);
 }

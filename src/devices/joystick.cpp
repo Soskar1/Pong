@@ -1,4 +1,4 @@
-#include "joystick.h"
+#include "devices/joystick.h"
 
 namespace ArduinoPong {
     Joystick::Joystick(const uint8_t& xPin, const uint8_t& yPin, const uint8_t& swPin) : 
