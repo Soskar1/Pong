@@ -1,7 +1,7 @@
 #include "joystick.h"
 
 namespace ArduinoPong {
-    Joystick::Joystick(const int& xPin, const int& yPin, const int& swPin) : 
+    Joystick::Joystick(const uint8_t& xPin, const uint8_t& yPin, const uint8_t& swPin) : 
         xPin(xPin), yPin(yPin), swPin(swPin), xMin(-1.0f), xMax(1.0f), yMin(-1.0f), yMax(1.0f) { }
 
     void Joystick::begin() const {

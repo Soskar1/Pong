@@ -6,7 +6,7 @@
 namespace ArduinoPong {
     class Joystick {
         public:
-            Joystick(const int& xPin, const int& yPin, const int& swPin);
+            Joystick(const uint8_t& xPin, const uint8_t& yPin, const uint8_t& swPin);
 
             void begin() const;
 
@@ -14,9 +14,9 @@ namespace ArduinoPong {
             float getY() const;
             bool buttonPressed() const;
         private:
-            int xPin;
-            int yPin;
-            int swPin;
+            uint8_t xPin;
+            uint8_t yPin;
+            uint8_t swPin;
 
             float xMin;
             float xMax;
