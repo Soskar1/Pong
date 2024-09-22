@@ -2,6 +2,7 @@
 #define PONG_H
 
 #include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal.h>
 #include <ArxSmartPtr.h>
 #include <inttypes.h>
 #include "input.h"
@@ -11,11 +12,11 @@
 namespace ArduinoPong {
     class Pong {
         public:
-            Pong(const uint8_t& maxX, const uint8_t& maxY, const std::shared_ptr<Input>& leftPaddleInput, const std::shared_ptr<Input>& rightPaddleInput, LiquidCrystal_I2C& lcd);
+            Pong(const uint8_t& maxX, const uint8_t& maxY, const std::shared_ptr<Input>& leftPaddleInput, const std::shared_ptr<Input>& rightPaddleInput, LiquidCrystal_I2C& lcd, LiquidCrystal& counterLCD);
 
             void loadGraphics();
             void update();
-            
+            void drawCounter();
         private:
             const uint8_t MAX_X;
             const uint8_t MAX_Y;
@@ -28,6 +29,10 @@ namespace ArduinoPong {
             bool leftWon;
             bool rightWon;
 
+            int leftScore;
+            int rightScore;
+
+            LiquidCrystal* counterLCD;
             LiquidCrystal_I2C* lcd;
 
             uint8_t leftPaddleTopChar[8] = { 0x18, 0x18, 0x18, 0x18, 0x00, 0x00, 0x00, 0x00 };

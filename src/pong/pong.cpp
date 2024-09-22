@@ -1,8 +1,8 @@
 #include "pong/pong.h"
 
 namespace ArduinoPong {
-    Pong::Pong(const uint8_t& maxX, const uint8_t& maxY, const std::shared_ptr<Input>& leftPaddleInput, const std::shared_ptr<Input>& rightPaddleInput, LiquidCrystal_I2C& lcd) :
-        MAX_X(maxX), MAX_Y(maxY), STEP(0.5f), leftPaddle(0, maxY / 2, maxY, STEP, leftPaddleInput), rightPaddle(maxX, maxY / 2, maxY, STEP, rightPaddleInput), ball(maxX, maxY), lcd(&lcd) { }
+    Pong::Pong(const uint8_t& maxX, const uint8_t& maxY, const std::shared_ptr<Input>& leftPaddleInput, const std::shared_ptr<Input>& rightPaddleInput, LiquidCrystal_I2C& lcd, LiquidCrystal& counterLCD) :
+        MAX_X(maxX), MAX_Y(maxY), STEP(0.5f), leftPaddle(0, maxY / 2, maxY, STEP, leftPaddleInput), rightPaddle(maxX, maxY / 2, maxY, STEP, rightPaddleInput), ball(maxX, maxY), counterLCD(&counterLCD), lcd(&lcd) { }
 
     void Pong::loadGraphics() {
         lcd->createChar(LEFT_PADDLE_TOP, leftPaddleTopChar);
@@ -80,14 +80,26 @@ namespace ArduinoPong {
         if (rightWon) {
             ball.setDirection(-1, random(-3, 3));
             rightWon = false;
+            ++rightScore;
         }
 
         if (leftWon) {
             ball.setDirection(1, random(-3, 3));
             leftWon = false;
+            ++leftScore;
         }
 
         draw();
+        drawCounter();
         delay(1000);
+    }
+
+    void Pong::drawCounter() {
+        counterLCD->clear();
+        counterLCD->setCursor(0, 0);
+        counterLCD->print("P1: " + String(leftScore));
+
+        counterLCD->setCursor(0, 1);
+        counterLCD->print("P2: " + String(rightScore));
     }
 }

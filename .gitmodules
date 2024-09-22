@@ -4,3 +4,6 @@
 [submodule "lib/ArxSmartPtr"]
 	path = lib/ArxSmartPtr
 	url = https://github.com/hideakitai/ArxSmartPtr.git
+[submodule "lib/LiquidCrystal"]
+	path = lib/LiquidCrystal
+	url = https://github.com/arduino-libraries/LiquidCrystal.git
