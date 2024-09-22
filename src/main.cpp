@@ -5,8 +5,12 @@
 #include "pong/custom_characters.h"
 #include "pong/joystick_input.h"
 
+#include "devices/button.h"
+
 LiquidCrystal_I2C lcd(0x3F, 20, 4);
 ArduinoPong::JoystickInput input(A0, A1, 7);
+ArduinoPong::Button upButton(4);
+ArduinoPong::Button downButton(2);
 
 void setup() {
   lcd.begin();
@@ -20,9 +24,8 @@ void setup() {
   lcd.createChar(5, rightPaddle);
 
   input.begin();
-
-  pinMode(2, INPUT);
-  pinMode(4, INPUT);
+  upButton.begin();
+  downButton.begin();
 }
 
 void loop() {
@@ -34,15 +37,12 @@ void loop() {
   // lcd.clear();
   // lcd.println("Y: " + String(y));
 
-  int up = digitalRead(4);
-  int down = digitalRead(2);
-
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("UP: " + String(up));
+  lcd.print("UP: " + String(upButton.isPressed()));
 
   lcd.setCursor(0, 1);
-  lcd.print("DOWN: " + String(down));
+  lcd.print("DOWN: " + String(downButton.isPressed()));
   
   delay(200);
 }
