@@ -1,8 +1,7 @@
 #ifndef JOYSTICK_INPUT
 #define JOYSTICK_INPUT
 
-#include "input_system/input.h"
-#include "input_system/value_event.h"
+#include "input.h"
 #include "devices/joystick.h"
 
 namespace ArduinoPong {

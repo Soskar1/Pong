@@ -12,7 +12,7 @@ namespace ArduinoPong {
 
         if (abs(yPrev - y) > THRESHOLD) {
             yPrev = y;
-            registerInputEvent(std::make_shared<ValueEvent>(&y));
+            registerInput(y);
         }
     }
 }
