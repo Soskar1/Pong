@@ -12,15 +12,6 @@ ArduinoPong::ButtonInput buttons(4, 2);
 
 void setup() {
   lcd.begin();
-
-  lcd.createChar(0, leftPaddleTop);
-  lcd.createChar(1, leftPaddleDown);
-  lcd.createChar(2, leftPaddle);
-
-  lcd.createChar(3, rightPaddleTop);
-  lcd.createChar(4, rightPaddleDown);
-  lcd.createChar(5, rightPaddle);
-
   joystick.begin();
   buttons.begin();
 }
