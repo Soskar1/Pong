@@ -4,14 +4,9 @@
 namespace ArduinoPong {
     class Input {
         public:
-            Input();
+            Input() { };
 
-            virtual void read() = 0;
-        
-            void registerInput(const float& value);
-            float getInputValue() const;
-        private:
-            float inputValue;
+            virtual float read() const = 0;
     };
 }
 

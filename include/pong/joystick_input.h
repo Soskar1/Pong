@@ -10,7 +10,7 @@ namespace ArduinoPong {
             JoystickInput(const uint8_t& xPin, const uint8_t& yPin, const uint8_t& swPin, const float& inputUpdateThreshold = 0.25f);
 
             void begin();
-            virtual void read();
+            virtual float read() const;
         private:
             Joystick joystick;
             float yPrev;

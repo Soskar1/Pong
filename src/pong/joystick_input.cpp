@@ -7,12 +7,7 @@ namespace ArduinoPong {
         joystick.begin();
     }
 
-    void JoystickInput::read() {
-        float y = joystick.getY();
-
-        if (abs(yPrev - y) > THRESHOLD) {
-            yPrev = y;
-            registerInput(y);
-        }
+    float JoystickInput::read() const {
+        return joystick.getY();
     }
 }
