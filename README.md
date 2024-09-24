@@ -24,13 +24,13 @@
 - First button to Arduino 9th pin
 - Second button to Arduino 8th pin
 
-# LCD 20x4 I2C
+## LCD 20x4 I2C
 - GND to ground
 - VCC to power supply
 - SDA to Arduino SDA pin
 - SCL to Arduino SDL pin
 
-# LCD 16x2
+## LCD 16x2
 - RS to 12th pin
 - E to 11th pin
 - D4 to 5th pin
